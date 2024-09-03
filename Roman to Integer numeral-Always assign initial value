@@ -1,0 +1,94 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string s;
+    std::cin >> s;
+    int count=0;;
+    int x = s.length();
+    int y[x];
+    int Number;
+    for (int i = 0;i<=(x-1);i++)
+        {
+        if ((s[i]=='I')&&(s[i+1]=='V'))
+        {
+            y[i]= 4;
+            y[i+1]= 0;
+            ++i;
+            count++;
+        }
+        else if ((s[i]=='I')&&(s[i+1]=='X'))
+        {
+            y[i]= 9;
+            y[i+1]=0;
+            ++i;
+            count++;
+        }
+        else if ((s[i]=='X')&&(s[i+1]=='L'))
+        {
+            y[i]= 40;
+            y[i+1]= 0;
+            ++i;
+            count++;
+        }
+        else if ((s[i]=='X')&&(s[i+1]=='C'))
+        {
+            y[i]= 90;
+            y[i+1]= 0;
+            ++i;
+            count++;
+        }
+        else if ((s[i]=='C')&&(s[i+1]=='D'))
+        {
+            y[i]= 400;
+            y[i+1]= 0;
+            ++i;
+            count++;
+        }
+        else if ((s[i]=='C')&&(s[i+1]=='M'))
+        {
+            y[i]= 900;
+            y[i+1]= 0;
+            ++i;
+            count++;
+        }
+        else
+        {
+        count++;
+        switch (s[i])
+        {
+        case 'I':
+            y[i] = 1;
+            break;
+        case 'V':
+            y[i] = 5;
+            break;
+        case 'X':
+            y[i] = 10;
+            break;
+        case 'L':
+            y[i] = 50;
+            break;
+        case 'C':
+            y[i] = 100;
+            break;
+        case 'D':
+            y[i] = 500;
+            break;
+        case 'M':
+            y[i] = 1000;
+            break;
+        default:
+            y[i] = 0;
+            break;
+        }
+        }
+    }
+    for (int i = 0; i<=(count-1);i++)
+    {
+        Number=y[i]+Number;
+    }
+    std::cout << Number;
+    return Number;
+}
