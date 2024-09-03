@@ -1,0 +1,113 @@
+#include <iostream>
+int main ()
+{
+        int num;
+        std::cin >> num;
+        std::string ass;
+        int j{0};
+        int x = num/1000;
+        for (int i=0;i<x;i++)
+        {
+            ass.push_back('M');
+            j++;
+        } //4th digit ends
+        num = (num-(x*1000));
+        x = num/100;
+            if((x>=5)&&(x!=9))
+            {
+                ass.push_back('D');
+                j++;
+                for (int i=0; i<(x-5); i++)
+                {
+                    ass.push_back('C');
+                    j++;
+                }
+            }
+            else if (x==4)
+            {
+                ass.push_back('C');
+                ass.push_back('D');
+                j++;j++;
+            }
+            else if (x<4)
+            {
+                for (int i=0;i<x;i++)
+                {
+                    ass.push_back('C');
+                    j++;
+                }
+            }
+            else if (x==9)
+            {
+                ass.push_back('C');
+                ass.push_back('M');
+                j++;j++;
+            } //3rd digit ends
+        num = (num-(x*100));
+        x = num/10;
+            if((x>=5)&&(x!=9))
+            {
+                ass.push_back('L');
+                j++;
+                for (int i=0; i<(x-5); i++)
+                {
+                    ass.push_back('X');
+                    j++;
+                }
+            }
+            else if (x==4)
+            {
+                ass.push_back('X');
+                ass.push_back('L');
+                j++;j++;
+            }
+            else if (x<4)
+            {
+                for (int i=0;i<x;i++)
+                {
+                    ass.push_back('X');
+                    j++;
+                }
+            }
+            else if (x==9)
+            {
+                ass.push_back('X');
+                ass.push_back('C');
+                j++;j++;
+            } //2nd digit ends
+        num = (num-(x*10));
+        x = num;
+        if((x>=5)&&(x!=9))
+            {
+                ass.push_back('V');
+                j++;
+                for (int i=0; i<(x-5); i++)
+                {
+                    ass.push_back('I');
+                    j++;
+                }
+            }
+            else if (x==4)
+            {
+                ass.push_back('I');
+                ass.push_back('V');
+                j++;j++;
+            }
+            else if (x<4)
+            {
+                for (int i=0;i<x;i++)
+                {
+                    ass.push_back('I');
+                    j++;
+                }
+            }
+            else if (x==9)
+            {
+                ass.push_back('I');
+                ass.push_back('X');
+                j++;j++;
+            }
+            std::cout << j;
+            std::cout << ass;
+        return ass;    
+}
