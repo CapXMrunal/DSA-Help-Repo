@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        for(int l=((digits.size())-1);l>=0;--l)
+        {
+        if(digits[l]== 9)
+        {
+            digits[l]=0;
+        }
+        else
+        {
+            digits[l]++;
+            return digits;
+        }
+        }
+        digits.insert(digits.begin(), 1);
+        return digits;
+    }
+};
+
+
+
+
+/* Here are some common ways to use insert:
+
+Insert a Single Element: Inserts one element at the specified position.
+
+vector<int> v = {2, 3, 4};
+v.insert(v.begin(), 1); // Insert 1 at the beginning
+// Result: v = {1, 2, 3, 4}
+Insert Multiple Copies of an Element: Inserts count copies of a specific value at the position.
+
+vector<int> v = {1, 2, 3};
+v.insert(v.begin() + 1, 2, 0); // Insert two 0s at index 1
+// Result: v = {1, 0, 0, 2, 3}
+Insert Elements from Another Range: Copies a range of elements into the vector starting at the specified position.
+
+vector<int> v1 = {1, 2, 3};
+vector<int> v2 = {7, 8, 9};
+v1.insert(v1.end(), v2.begin(), v2.end()); // Append v2 to v1
+// Result: v1 = {1, 2, 3, 7, 8, 9} /*
