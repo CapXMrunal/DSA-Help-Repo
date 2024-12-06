@@ -1,1 +1,22 @@
-
+class Solution {
+public:
+    int reverse(int x) {
+        string normal = to_string (x);
+        string reverse;
+        int length = normal.length();
+        length=length-1;
+        int j{0};
+        for (int i{length};i>=0;i--)
+        {
+            reverse[j]=normal[i];
+            j++;
+        }
+        try{
+            int result= stoi(reverse);
+            return (x<0)?-result:result;
+        }
+        catch (out_of_range&) {
+            return 0;
+        }
+    }
+};
