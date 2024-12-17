@@ -1,0 +1,31 @@
+class Solution {
+public:
+    string countAndSay(int n) {
+        string num;int j,k=1;
+        num="1";
+            
+        //1=1 2=11 3=21 4=1211
+        for(int i=1;i<n;i++)
+        {
+            vector<int> temp;
+            for(int j=0;j<num.length();j++)
+            {
+                if(j+1<num.length()&&num[j]==num[j+1])
+                {
+                    k++;
+                }
+                else
+                {
+                   temp.push_back(k);
+                   temp.push_back(num[j]-'0');
+                   k=1;
+                }
+            }
+            num = "";
+            for(int l = 0; l < temp.size(); l++) {
+                num += to_string(temp[l]);
+            }
+        }
+        return num;
+    }
+};
