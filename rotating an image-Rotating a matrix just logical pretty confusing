@@ -19,3 +19,60 @@ public:
         }
     }
 };
+
+
+
+
+
+
+class Solution {
+public:
+    bool findRotation(vector<vector<int>>& mat, vector<vector<int>>& target) {
+        //Transpose and Mirror image
+        //[0][1]=[1][0] [0][2]=[2][0] [2][1]=[1][2]
+        //[0][1]=[0][m] [1][1]=[1][m] [2][1]=[2][m]
+        int temp,m;
+        int k=1;bool t;
+        while(k<=4)
+        {
+        for(int i=0;i<mat.size();i++)
+        {
+            for(int j=i;j<mat.size();j++)
+            {
+                temp=mat[j][i];
+                mat[j][i]=mat[i][j];
+                mat[i][j]=temp;
+            }
+        }
+        for(int i=0;i<mat.size();i++)
+        {
+            m=mat.size()-1;
+            for(int j=0;j<mat.size()/2;j++)
+            {
+                temp=mat[i][j];
+                mat[i][j]=mat[i][m];
+                mat[i][m]=temp;
+                --m;
+            }
+        }
+        for(int i=0;i<mat.size();i++)
+        {
+            for(int j=0;j<mat.size();j++)
+            {
+                if(mat[i][j]==target[i][j])
+                t=true;
+                else
+                {t=false;
+                break;
+                }
+            }
+            if(t==false)
+            break;
+        }
+        if(t==true)
+        return true;
+        k++;
+        }
+        return false;
+    }
+};
