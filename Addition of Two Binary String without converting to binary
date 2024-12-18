@@ -1,0 +1,98 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        string bin="";
+        bool k=false;
+        int j=b.length()-1;
+        for(int i=a.length()-1;i>=0||j>=0;i--)
+        {
+            
+            if(j>=0&&i>=0)
+            {
+            if(a[i]==b[j]&&b[j]=='1'&&k==false)
+            {
+                bin+='0';
+                k=true;
+            }
+            else if(a[i]!=b[j]&&k==false)
+            {
+                bin+='1';
+            }
+            else if(a[i]==b[j]&&b[j]=='0'&&k==false)
+            {
+                bin+='0';
+            }
+            else if(a[i]==b[j]&&b[j]=='1'&&k==true)
+            {
+                bin+='1';
+                k=true;
+            }
+            else if(a[i]!=b[j]&&k==true)
+            {
+                bin+='0';
+                k=true;
+            }
+            else if(a[i]==b[j]&&b[j]=='0'&&k==true)
+            {
+                bin+='1';
+                k=false;
+            }
+            }
+            else if(j<0&&i>=0)
+            {
+            if(a[i]=='1'&&k==false)
+            {
+                bin+='1';
+            }
+            else if(a[i]=='0'&&k==false)
+            {
+                bin+='0';
+            }
+            else if(a[i]=='1'&&k==true)
+            {
+                bin+='0';
+            }
+            else if(a[i]=='0'&&k==true)
+            {
+                bin+='1';
+                k=false;
+            }
+            }
+            else
+            {
+            if(b[j]=='1'&&k==false)
+            {
+                bin+='1';
+            }
+            else if(b[j]=='0'&&k==false)
+            {
+                bin+='0';
+            }
+            else if(b[j]=='1'&&k==true)
+            {
+                bin+='0';
+            }
+            else if(b[j]=='0'&&k==true)
+            {
+                bin+='1';
+                k=false;
+            }
+            }
+            j--;
+        }
+        if(k==true)
+        bin+='1';
+
+        //reversing
+        int size=bin.length()-1;
+        for(int i=0;i<bin.length()/2;i++)
+        {
+            int temp=bin[i];
+            bin[i]=bin[size];
+            bin[size]=temp;
+            --size;
+        }
+
+        return bin;
+    }
+};
