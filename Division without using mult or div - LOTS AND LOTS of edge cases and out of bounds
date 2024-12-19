@@ -10,7 +10,7 @@ public:
         if(dividend==INT_MIN)
         {dividend+=div;quot++;}
         long int divi=abs(dividend);
-        
+//=================================================================================================
         while(divi>=div)
         {
             long int Tempdiv=div,Tempquot=1;
@@ -22,6 +22,7 @@ public:
             divi-=Tempdiv;
             quot+=Tempquot;
         }
+//==================================================================================================
         if((divisor>=0&&dividend>=0) ||(divisor<=0&&dividend<=0))
         {
             return quot;
