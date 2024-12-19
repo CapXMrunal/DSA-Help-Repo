@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int divide(int dividend, int divisor) {
+        if(dividend==INT_MIN && divisor==-1) return INT_MAX;
+        if(dividend==INT_MIN && divisor==1) return INT_MIN;
+        if(dividend==INT_MIN && divisor==INT_MIN) return 1;
+        if(divisor==INT_MIN) return 0;
+        long int quot=0;
+        long int div=abs(divisor);
+        if(dividend==INT_MIN)
+        {dividend+=div;quot++;}
+        long int divi=abs(dividend);
+        
+        while(divi>=div)
+        {
+            long int Tempdiv=div,Tempquot=1;
+            while(divi-Tempdiv>=Tempdiv)
+            {
+                Tempdiv <<= 1;
+                Tempquot <<= 1;
+            }
+            divi-=Tempdiv;
+            quot+=Tempquot;
+        }
+        if((divisor>=0&&dividend>=0) ||(divisor<=0&&dividend<=0))
+        {
+            return quot;
+        }
+        else
+        {
+            return -quot;
+        }
+    }
+};
