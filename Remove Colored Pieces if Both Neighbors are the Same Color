@@ -1,0 +1,61 @@
+class Solution {
+public:
+    bool winnerOfGame(string colors) {
+        bool pin;
+        while(colors.length()>2)
+        {
+            for(int i=1;i<=colors.length()-2;i++)
+            {
+                int l=i-1,r=i+1;
+                if(colors[l]=='X'&&l>=0)
+                {while(colors[l]=='X'&&l>=0)
+                {l--;}}
+                if(colors[l]=='X')
+                {while(colors[r]=='X'&&r<=colors.length()-1)
+                {r++;}}
+                if(colors[l]=='A'&&colors[i]=='A'&&colors[r]=='A')
+                {
+                    colors[i]='X';
+                    pin = true;
+                    cout<<colors[l]<<colors[i]<<colors[r]<<endl;
+                    break;
+                }
+                else
+                {
+                    pin = false;
+                }
+                cout<<colors[l]<<colors[i]<<colors[r]<<endl;
+            }
+            cout<<pin<<"A"<<endl;
+            if(pin == 0)
+            return false;
+            for(int i=1;i<=colors.length()-2;i++)
+            {
+                int l=i-1,r=i+1;
+                if(colors[l]=='X'&&l>=0)
+                {while(colors[l]=='X'&&l>=0)
+                {l--;}}
+                if(colors[l]=='X')
+                {while(colors[r]=='X'&&r<=colors.length()-1)
+                {r++;}}
+                if(colors[l]=='B'&&colors[i]=='B'&&colors[r]=='B')
+                {
+                    colors[i]='X';
+                    pin = true;
+                    cout<<colors[l]<<colors[i]<<colors[r]<<"in"<<endl;
+                    break;
+                }
+                else
+                {
+                    pin = false;
+                    cout<<colors[l]<<colors[i]<<colors[r]<<"pinned"<<endl;
+                }
+                cout<<colors[l]<<colors[i]<<colors[r]<<"out"<<endl;
+            }
+            cout<<pin<<endl;
+            if(pin == false)
+            return true;
+        }
+        return false;
+    }
+};
