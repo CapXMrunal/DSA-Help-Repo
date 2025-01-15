@@ -48,3 +48,53 @@ public:
  * string param_2 = obj->back(steps);
  * string param_3 = obj->forward(steps);
  */
+
+----------------------------------------2----------------------------------------------------
+
+class BrowserHistory {
+private:
+vector<string> link;
+int index; 
+public:
+    BrowserHistory(string homepage) {
+        link.push_back(homepage);
+        index=0;
+    }
+    
+    void visit(string url) {
+        if(index==link.size()-1)
+        {link.push_back(url);index++;}
+        else
+        {index++;link[index]=url;}
+        int temp=index;
+        while(link.size()-1>temp)
+        {
+            temp++;
+            link[temp]="";
+        }
+    }
+    
+    string back(int steps) {
+        for(int i=1;i<=steps&&index>0;i++)
+        {
+            index--;
+        }
+        return link[index];
+    }
+    
+    string forward(int steps) {
+        for(int i=1;i<=steps&&index<link.size()-1&&link[index+1]!="";i++)
+        {
+            index++;
+        }
+        return link[index];
+    }
+};
+
+/**
+ * Your BrowserHistory object will be instantiated and called as such:
+ * BrowserHistory* obj = new BrowserHistory(homepage);
+ * obj->visit(url);
+ * string param_2 = obj->back(steps);
+ * string param_3 = obj->forward(steps);
+ */
