@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
+        
+        int maxVal = 0;
+        for (const auto& row : mat) {
+            for (int num : row) {
+                maxVal = max(maxVal+1, num);
+            }
+        }
+
+        vector <int> posrow(maxVal+1,-1);
+        vector <int> poscol(maxVal+1,-1);
+        
+        for(int i=0;i<mat.size();i++)
+        {
+            for(int j=0;j<mat[0].size();j++)
+            {
+                posrow[mat[i][j]]=i;
+                poscol[mat[i][j]]=j;
+            }
+        }
+        
+        vector <int> colorrow(maxVal+1,0);
+        vector <int> colorcol(maxVal+1,0);
+        
+        for(int i=0;i<arr.size();i++)
+        {
+            colorrow[posrow[arr[i]]]++;
+            colorcol[poscol[arr[i]]]++;
+            if(colorrow[posrow[arr[i]]]==mat[0].size()||colorcol[poscol[arr[i]]]==mat.size())
+            return i;
+        }
+
+        return -1;
+    }
+};
