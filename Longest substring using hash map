@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int maxlen = 0;
+        int currlen = 0;
+        for (int i =0;i<s.length();i++)
+        {
+            currlen = subsubstring(s,i);
+            if(currlen>maxlen){
+                maxlen = currlen;
+            }
+        }
+        return maxlen;
+    }
+    int subsubstring(string s, int i) {
+        bool hash[127]={false};
+        int j = 0;
+        for (;i<s.length();i++)
+        {
+            if(hash[s[i]]==true){
+                return j;
+            }
+            else {
+                hash[s[i]] = true;
+                j++;
+            }
+        }
+        return j;
+    }
+};
+
+
+Hashing with array;
