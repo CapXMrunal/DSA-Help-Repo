@@ -22,3 +22,23 @@ public:
         return false;
     }    
 };
+
+////////Using Floyds Cycle detection
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        //checking for cycle using Flyods Cycle detection of tortoise and hare algo
+        if(!head) return false;
+        ListNode* tor = head;
+        ListNode* hare = head->next;
+        while (hare && hare->next)
+        {
+            if(tor == hare)
+            return true;
+
+            tor = tor->next;
+            hare = hare->next->next;
+        }
+        return false;
+    }    
+};
