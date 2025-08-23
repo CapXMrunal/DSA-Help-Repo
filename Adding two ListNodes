@@ -1,0 +1,67 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        //M2 first converting to int then adding and putting each digit into a listnode
+        /*int num1 = 0;//set a edge case where no l1 present
+        int k = 1;
+        while(l1)
+        {
+            num1 += (l1->val)*k; 
+            l1 = l1->next;
+            k*=10;
+        }
+        //reverse number
+        k = 1;
+        int num2 = 0;
+        while(l2)
+        {
+            num2 += (l2->val)*k; 
+            l2 = l2->next;
+            k*=10;
+        }
+        cout<<num1 << "Is Num 1"<<num2 <<"Is Num 2";
+        int num3 = num1+num2;
+        ListNode ans(0);
+        cout<<endl;
+        cout<<num3<< "Num 3"<<endl;
+        ListNode* head = &ans;
+        do
+        {
+            ListNode* tail = new ListNode(num3%10);
+            head->next = tail;
+            head = head->next;
+            num3/=10;
+        }
+        while(num3>0);
+        return ans.next;*/
+        //Using M2 directly adding and substituiting 
+
+        ListNode dummy(0);
+        ListNode* head = &dummy;
+        int k = 0;
+        int n = 0;
+        int add = 0;
+        while(l1 || l2 || n)
+        {
+            add = 0;
+            if(l1) {add += l1->val;l1=l1->next;}
+            if(l2) {add += l2->val;l2=l2->next;}
+            if(n) {add += n;}
+            if(add>=10) n = 1;
+            else n = 0;
+            head->next = new ListNode(add%10);
+            head = head->next;
+        }
+        return dummy.next;
+    }
+};
