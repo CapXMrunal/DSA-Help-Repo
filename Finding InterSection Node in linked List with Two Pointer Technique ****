@@ -26,3 +26,34 @@ public:
         return pointerA;
     }
 };
+
+//Method with HashMap
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        unordered_map <ListNode* ,int> arr;
+        while(headA||headB)
+        {
+            if(headA) {
+                if(arr[headA]==1) return headA;
+                arr[headA] = 1;
+                headA = headA->next;
+            }
+            if(headB) {
+                if(arr[headB]==1) return headB;
+                arr[headB] = 1;
+                headB = headB->next;
+            }
+        }
+        return 0;
+    }
+};
