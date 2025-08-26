@@ -1,0 +1,50 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if(!head) return  true;
+        unordered_map <int, int> mymap;
+        int n = 1;
+        int sum = 0;
+        ListNode* temp = head;
+        while(temp)
+        {
+            cout<<temp->val;
+            sum += temp->val;
+            mymap[n] = sum;
+            n++;
+            temp = temp->next;
+        }
+        ListNode* last = head;
+        ListNode* lastlast;
+        head = head->next;
+        last->next = nullptr;
+        while(head)
+        {
+            lastlast = last;
+            last = head;
+            head = head->next;
+            last->next = lastlast;
+        }
+        sum = 0;
+        n = 1;
+        while(last)
+        {
+            cout<<last->val<<" "<<mymap[n];
+            sum += last->val;
+            if (mymap[n] != sum) return false;
+            last = last->next;
+            n++;
+        }
+        return true;
+    }
+};
